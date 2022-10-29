@@ -1,0 +1,28 @@
+name: My Workflow Workshop
+
+#trigger
+on:
+ push:
+  branches:
+  - "release/*"
+
+
+
+# jobs
+jobs: 
+  #job name
+  my-workflow-workshop:
+    #OS that this workflow will be runnning on
+    runs-on: ubuntu-latest
+
+    #list of steps to perform task
+    steps: 
+    - name: echo current branch
+      run: echo "$(date) Current branch is ${{ github.ref_name}}"
+    - name: Checkout correct branch
+      uses: actions/checkout@v3
+      with:
+        ref: ${{github.ref_name}}
+    
+        
+    
